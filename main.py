@@ -70,9 +70,10 @@ def main():
     sample_standard_deviation = np.std([int(x[1]) for x in data])
 
     # calculation of sample moment of 3 and 4 orders
-    sample_moment_1 = np.mean([int(x[1]) for x in data])
-    sample_moment_3 = np.mean([(int(x[1]) - sample_moment_1) ** 3 for x in data])
-    sample_moment_4 = np.mean([(int(x[1]) - sample_moment_1) ** 4 for x in data])
+    new_data = [i**3 for i in data]
+    sample_moment_3 = sum_values(new_data) / len(new_data)
+    new_data = [i**4 for i in data]
+    sample_moment_4 = sum_values(new_data) / len(new_data)
 
     # calculation of selective excess
     selective_excess = sample_moment_3 / (sample_standard_deviation ** 3)
